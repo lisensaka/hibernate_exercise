@@ -1,17 +1,20 @@
 package org.example;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "student")
-public class Student {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
-    private long id;
+@Table(name = "student_table")
+@Getter @Setter
+public class Student extends BaseClass{
     private String firstName;
     private String lastName;
     private int age;
+
+    @OneToOne
+    private School school;
 
     public Student(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -20,45 +23,12 @@ public class Student {
     }
 
     public Student() {
-
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +

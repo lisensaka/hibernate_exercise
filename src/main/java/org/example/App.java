@@ -21,10 +21,10 @@ public class App {
             long studentId = 2;
 
 //           *** method for saving new Student with Hibernate
-//            saveStudent(session, "John", "Doe", 41);
+            saveStudent(session, "John", "Doe", 41);
 
 //           ***  method for reading Student by id  Hibernate
-            getStudentById(session, studentId);
+//            getStudentById(session, studentId);
 
 
 //           *** method for updating Student by id  Hibernate
@@ -75,8 +75,28 @@ public class App {
     }
 
     private static void saveStudent(Session session, String firstName, String lastName, int age) {
+        City city = saveAndGetCity(session);
+
+        School school = saveAndGetSchool(city, session);
+
         Student student = new Student(firstName, lastName, age);
+        student.setSchool(school);
         session.save(student);
+    }
+
+    private static School saveAndGetSchool(City city, Session session) {
+        School school = new School();
+        school.setCity(city);
+        school.setSchoolName("Kristaq Capo");
+        session.save(school);
+        return school;
+    }
+
+    private static City saveAndGetCity(Session session) {
+        City city = new City();
+        city.setCityName("Berat");
+        session.save(city);
+        return city;
     }
 
 

@@ -11,5 +11,7 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property> <!-- Add this line -->
         <mapping class="org.example.Student" />
+        <mapping class="org.example.School" />
+        <mapping class="org.example.City" />
     </session-factory>
 </hibernate-configuration>
