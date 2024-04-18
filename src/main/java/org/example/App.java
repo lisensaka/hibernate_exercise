@@ -11,7 +11,7 @@ import java.util.List;
  * Hello world!
  */
 public class App {
-    private static final SessionFactory sessionFactory = new Configuration()
+    public static final SessionFactory sessionFactory = new Configuration()
             .configure("hibernate.cfg.xml")
             .buildSessionFactory();
 
