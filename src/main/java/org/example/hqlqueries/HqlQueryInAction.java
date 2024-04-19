@@ -19,6 +19,7 @@ public class HqlQueryInAction {
         getAllBooksByAuthorNameNativeQuery("Martin Segoni");
     }
 
+//    lexojme te gjith vlerat e Autor
     static void readAllAuthorValues() {
         List<Author> fromAuthor = entityManager.createQuery("from Author", Author.class).getResultList();
         for (Author a : fromAuthor) {
@@ -26,6 +27,7 @@ public class HqlQueryInAction {
         }
     }
 
+    // lexojme te gjitha vlerat e Librave
     static void readAllBookValues() {
         List<Book> fromBook = entityManager.createQuery("from Book as b order by b.bookTitle asc ", Book.class).getResultList();
         for (Book b : fromBook) {
@@ -33,6 +35,7 @@ public class HqlQueryInAction {
         }
     }
 
+//    lexojme te gjith librat ne baze te emrit te autorit
     static void getAllBooksByAuthorNameNativeQuery(String authorName) {
         Query nativeQuery = entityManager.createNativeQuery("select * \n" +
                 "from testdb.book b \n" +
@@ -48,6 +51,7 @@ public class HqlQueryInAction {
         }
     }
 
+//    lexojme librat me ane te titullit
     static void getBookByTitle(String bookTitle) {
         Query query = entityManager.createQuery("from Book as b where b.bookTitle = :title", Book.class);
         query.setParameter("title", bookTitle);
